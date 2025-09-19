@@ -1,0 +1,4 @@
+{
+    "command": "pytest",
+    "working_directory": "/home/kavia/workspace/code-generation/fwa-management-platform-54219-54236/rdkb_backend"
+}
