@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title or "RDKB API" }} - WebSocket & API Help</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --primary:#2563EB;
+      --secondary:#F59E0B;
+      --error:#EF4444;
+      --bg:#f9fafb;
+      --surface:#ffffff;
+      --text:#111827;
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;}
+    .container{max-width:960px;margin:40px auto;padding:0 16px;}
+    .card{background:var(--surface);border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.06);padding:24px;}
+    .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+    .badge{background:linear-gradient(to right, rgba(37,99,235,0.1), rgba(156,163,175,0.1));color:var(--primary);border:1px solid rgba(37,99,235,0.15);padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;}
+    h1{font-size:26px;margin:10px 0;}
+    h2{font-size:18px;margin:20px 0 10px;}
+    code, pre{background:#0b1220;color:#d1e9ff;border-radius:8px;}
+    code{padding:2px 6px;}
+    pre{padding:14px;overflow:auto;}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:12px;}
+    .btn{display:inline-block;background:var(--primary);color:white;text-decoration:none;padding:10px 14px;border-radius:8px;box-shadow:0 8px 16px rgba(37,99,235,.25);transition:transform .15s ease, box-shadow .15s ease;}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(37,99,235,.35);}
+    .note{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.4);color:#7c4a03;padding:10px 12px;border-radius:8px;}
+    a{color:var(--primary);}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <span class="badge">Ocean Professional</span>
+        <a class="btn" href="/docs">OpenAPI Docs</a>
+      </div>
+      <h1>RDKB API Help</h1>
+      <p>Welcome to the RDK-B Fixed Wireless Access platform API. Use the endpoints to authenticate, register devices, configure settings, and stream telemetry.</p>
+
+      <div class="grid">
+        <div>
+          <h2>Authentication</h2>
+          <p>Obtain a Bearer token using <code>POST /auth/login</code> with OAuth2 Password flow.</p>
+          <pre>curl -X POST -d "username=user@example.com&amp;password=pass" {{ base_url }}/auth/login</pre>
+        </div>
+        <div>
+          <h2>Devices</h2>
+          <p>Register and manage devices using <code>/devices</code> endpoints.</p>
+        </div>
+        <div>
+          <h2>Configuration</h2>
+          <p>Upsert and fetch per-device settings via <code>/configs</code>.</p>
+        </div>
+        <div>
+          <h2>Monitoring</h2>
+          <p>Submit and query telemetry via <code>/monitoring</code>.</p>
+        </div>
+      </div>
+
+      <h2>Base URL</h2>
+      <p><code>{{ base_url }}</code></p>
+
+      <h2>Authorization</h2>
+      <p>Use the token returned from <code>/auth/login</code> as a Bearer token:</p>
+      <pre>Authorization: Bearer &lt;access_token&gt;</pre>
+
+      <div class="note">
+        For real-time features, integrate WebSocket notifications (not included in this starter) following similar auth patterns.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
